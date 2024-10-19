@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+    Admin donor history
+
+
+{% endblock title %}
+
+{% block body %}
+
+    <div class="container">
+
+        <h1>Donor History</h1>
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Blood Group</th>
+                    <th>Units</th>
+                    <th>Disease</th>
+                    <th>date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for donor in donor_history %}
+                <tr>
+                    <td>{{ donor[0] }}</td>
+                    <td>{{ donor[1] }}</td>
+                    <td>{{ donor[2] }}</td>
+                    <td>{{ donor[3] }}</td>
+                    <td>{{ donor[4] }}</td>
+                    <td>{{ donor[5] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+     </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+
+{% endblock body %}

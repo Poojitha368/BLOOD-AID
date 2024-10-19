@@ -1,0 +1,6 @@
+Flask-Session==0.8.0
+Flask==3.0.3
+Flask-MySQLdb==2.0.0
+PyYAML==6.0.2
+email-validator==1.2.1
+
