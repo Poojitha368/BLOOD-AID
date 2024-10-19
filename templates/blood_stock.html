@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}
+Admin blood Stock
+{% endblock title %}
+{% block body %}
+
+<div class="container mt-5">
+    <h1>Blood Stock</h1>
+    <div class="row">
+        {% for blood_group, units in blood_stock.items() %}
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{ blood_group }}</h5>
+                    <p class="card-text">Units: {{ units }} ml</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <a href="{{ url_for('index') }}" class="btn btn-primary bg-danger mt-3">Go back</a>
+</div>
+
+{% endblock body %}
