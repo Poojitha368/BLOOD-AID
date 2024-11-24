@@ -5,8 +5,7 @@ import yaml,smtplib
 from email.mime.text import MIMEText
 import os
 
-password=os.environ['GMAIL_TOKENS']
-print(password)
+
 app = Flask(__name__)
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
@@ -46,27 +45,10 @@ def register():
         cur.execute("INSERT INTO user(username, password,email, phone_number, blood_group, dob, address, city, state, pin_code) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", (username, password,email_address, phonenumber, bloodgroup, dob, address, city, state, pincode))
         mysql.connection.commit()
         cur.close()
-        sender_email = "jayadeepreddy452002@gmail.com"
-        receiver_email =  session.get("email")
-           
-        subject = "Bloodaid verification"
-        message = "verify here"
-        send_email (sender_email,receiver_email,subject,message)
         return redirect("/")
 
     return render_template("register.html")
 
-def send_email(sender_email,receiver_email,subject,message):
- 
-        msg = MIMEText(message)
-        msg['Subject'] = subject
-        msg['From'] = sender_email
-        msg['To'] = receiver_email
-
-        server = smtplib.SMTP("smtp.gmail.com", 587)
-        server.starttls()
-        server.login(sender_email, "roqhyamqtmmvynde")
-        server.sendmail(sender_email, receiver_email, msg.as_string())
     
 
 @app.route("/login", methods=["POST", "GET"])
